@@ -57,6 +57,12 @@ class Game:
             self.tie = True
             return True
         return false
-
+    def switch_turn(self):
+        if self.turn == 'X':
+            self.turn = '0'
+        else:
+            self.turn = 'X'
+    def play_game(self):
+        print("TIC TACCC TOE! TIC TACCC TOE!")
 game_instance = Game()
 game_instance.play_game()
