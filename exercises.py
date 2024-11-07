@@ -8,17 +8,14 @@ class Game:
             'a2': None, 'b2': None, 'c2': None,
             'a3': None, 'b3': None, 'c3': None,
         }
-    def play_game(self):
-        print("play that tic tac toe type beat")
-        # Game Logic, place holder for now
     def print_board(self):
         b = self.board
         print(f"""
             A   B   C
         1)  {b['a1'] or ' '} | {b['b1'] or ' '} | {b['c1'] or ' '}
-        ----------
+        ------------------
         2)  {b['a2'] or ' '} | {b['b2'] or ' '} | {b['c2'] or ' '}
-        ----------
+        ------------------
         3)  {b['a3'] or ' '} | {b['b3'] or ' '} | {b['c3'] or ' '}
         """)
     def print_message(self):
@@ -30,7 +27,7 @@ class Game:
             print(f"{self.turn}'s turn!")
     def get_move(self):
         while True:
-            move = input("Enter your move:(example: A1)").lower() #converts to lowercase to avoid errors
+            move = input("Enter your move(example - A1) :").lower() #converts to lowercase to avoid errors
             if move in self.board and self.board[move] is None: #checks if move is valid and not taken
                 self.board[move] = self.turn #if valid, places move on board
                 break
@@ -56,13 +53,30 @@ class Game:
         if all(value is not None for value in self.board.values()) and not self.winner:
             self.tie = True
             return True
-        return false
+        return False
     def switch_turn(self):
         if self.turn == 'X':
-            self.turn = '0'
+            self.turn = 'O'
         else:
             self.turn = 'X'
     def play_game(self):
-        print("TIC TACCC TOE! TIC TACCC TOE!")
+        print("TIC TACCC TOE! TIC TACCC TOE! TTT T_T")
+        
+        while not self.winner and not self.tie: #game loop
+            self.print_board() #current state of board
+            self.print_message() #display whose turn it is
+            self.get_move() # Get players move
+            
+            if self.check_for_winner():
+                self.print_board()
+                print(f"{self.winner} is the winner! Loser drinks!")
+                break
+            if self.check_for_tie():
+                self.print_board()
+                print(f"Tieee game! Drink!")
+                break
+            self.switch_turn() #switch turns
+        print("Game Over! Buh Bye!")
+            
 game_instance = Game()
 game_instance.play_game()
