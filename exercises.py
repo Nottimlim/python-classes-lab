@@ -36,6 +36,22 @@ class Game:
                 break
             else:
                 print("Invalid move, try again.") #invalid move, print & continue loop
+    def check_for_winner(self):
+        winning_combinations = [
+            ['a1', 'b1', 'c1'], #toprow
+            ['a2', 'b2', 'c2'], #middlerow
+            ['a3', 'b3', 'c3'], #bottomrow
+            ['a1', 'a2', 'a3'], #leftcolumn
+            ['b1', 'b2', 'b3'], #middlecolumn
+            ['c1', 'c2', 'c3'], #rightcolumn
+            ['a1', 'b2', 'c3'], #diagonal from top left to bottom right
+            ['c1', 'b2', 'a3'], #diagnol from top right to bottom left
+        ]
+        for combo in winning_combinations:
+            if self.board[combo[]] == self.board[combo[1]] == self.board[combo[2]] == self.board[combo[0]] is not None:
+                self.winner = self.board[combo[0]]
+                return True #Winner Found
+        return false 
 
 game_instance = Game()
 game_instance.play_game()
