@@ -1,3 +1,5 @@
+import time
+
 class Game:
     def __init__(self):
         self.turn = 'X' # Turn
@@ -61,6 +63,13 @@ class Game:
             self.turn = 'X'
     def play_game(self):
         print("TIC TACCC TOE! TIC TACCC TOE! TTT T_T")
+        
+        #countdown from 5 to 1
+        for i in range(5, 0, -1):
+            print(i)
+            time.sleep(1)
+        print("GAMEEE START!")
+        time.sleep(1)
         
         while not self.winner and not self.tie: #game loop
             self.print_board() #current state of board
