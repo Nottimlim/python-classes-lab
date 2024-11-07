@@ -51,7 +51,12 @@ class Game:
             if self.board[combo[]] == self.board[combo[1]] == self.board[combo[2]] == self.board[combo[0]] is not None:
                 self.winner = self.board[combo[0]]
                 return True #Winner Found
-        return false 
+        return False
+    def check_for_tie(self):
+        if all(value is not None for value in self.board.values()) and not self.winner:
+            self.tie = True
+            return True
+        return false
 
 game_instance = Game()
 game_instance.play_game()
