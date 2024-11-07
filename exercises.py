@@ -48,10 +48,10 @@ class Game:
             ['c1', 'b2', 'a3'], #diagnol from top right to bottom left
         ]
         for combo in winning_combinations:
-            if self.board[combo[]] == self.board[combo[1]] == self.board[combo[2]] == self.board[combo[0]] is not None:
+            if self.board[combo[0]] == self.board[combo[1]] == self.board[combo[2]] == self.board[combo[0]] is not None:
                 self.winner = self.board[combo[0]]
                 return True #Winner Found
-        return False
+        return False #sike mf no winner
     def check_for_tie(self):
         if all(value is not None for value in self.board.values()) and not self.winner:
             self.tie = True
